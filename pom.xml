@@ -6,7 +6,7 @@
     <groupId>com.self.education</groupId>
     <artifactId>CatInfo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>CatInfo</name>
+    <name>Cat Info</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -29,6 +29,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -45,6 +49,10 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>

@@ -1,8 +1,7 @@
 package com.self.education.catinfo.domain;
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-@Getter
 public enum Colors {
 
     WHITE("White"),
@@ -20,5 +19,10 @@ public enum Colors {
 
     Colors(final String title) {
         this.title = title;
+    }
+
+    @JsonValue
+    public String getTitle() {
+        return title;
     }
 }

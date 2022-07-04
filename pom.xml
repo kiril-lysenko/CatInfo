@@ -22,6 +22,7 @@
         <lombok.version>1.18.24</lombok.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <swagger.version>1.6.9</swagger.version>
+        <google.guava.version>31.0.1-jre</google.guava.version>
     </properties>
 
     <dependencies>
@@ -71,6 +72,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google.guava.version}</version>
         </dependency>
 
         <dependency>

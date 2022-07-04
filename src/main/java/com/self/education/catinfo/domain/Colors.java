@@ -15,7 +15,7 @@ public enum Colors {
     FAWN("Fawn"),
     CREAM("Cream");
 
-    private String title;
+    private final String title;
 
     Colors(final String title) {
         this.title = title;

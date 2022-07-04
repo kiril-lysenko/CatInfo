@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet id="kkarpekina" author="create_enum_type">
+    <changeSet id="create_enum_type" author="kkarpekina">
         <sql>CREATE TYPE colors AS ENUM ('WHITE','BLACK','BLACK_WHITE','RED','BLACK_RED','RED_WHITE','RED_WHITE_BLACK','BLUE','FAWN','CREAM')</sql>
         <rollback>
             DROP TYPE colors;

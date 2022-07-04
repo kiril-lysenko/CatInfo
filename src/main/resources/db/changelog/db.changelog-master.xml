@@ -7,4 +7,5 @@
     <include file="changelog-v.1.0-initialise-database.xml" relativeToChangelogFile="true"/>
     <include file="changelog-v.2.0-filling-table.xml" relativeToChangelogFile="true"/>
     <include file="changelog-v.3.0-cat-colors-statistic.xml" relativeToChangelogFile="true"/>
+    <include file="changelog-v.4.0-cat-tail-and-whiskers-stat.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

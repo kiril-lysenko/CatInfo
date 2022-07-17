@@ -1,13 +1,5 @@
 package com.self.education.catinfo.service;
 
-import static java.lang.Boolean.TRUE;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import org.springframework.stereotype.Service;
 import com.self.education.catinfo.api.CatsColorInfoResponse;
 import com.self.education.catinfo.api.CatsStatResponse;
 import com.self.education.catinfo.domain.CatColorsInfo;
@@ -19,6 +11,15 @@ import com.self.education.catinfo.repository.CatColorsInfoRepository;
 import com.self.education.catinfo.repository.CatsRepository;
 import com.self.education.catinfo.repository.CatsStatRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import static java.lang.Boolean.TRUE;
 
 @Service
 @AllArgsConstructor
@@ -27,7 +28,6 @@ public class CatsStatisticServiceImpl implements CatsStatisticService {
     private final CatColorsInfoRepository catColorsInfoRepository;
     private final CatColorInfoMapper catColorInfoMapper;
     private final CatsStatRepository catsStatRepository;
-    //TODO: after create catsService and method findAll replace this
     private final CatsRepository catsRepository;
     private final CatsStatMapper catsStatMapper;
 

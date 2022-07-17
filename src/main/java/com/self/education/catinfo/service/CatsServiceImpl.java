@@ -1,6 +1,7 @@
 package com.self.education.catinfo.service;
 
 import com.self.education.catinfo.api.Attribute;
+import com.self.education.catinfo.api.CatRequest;
 import com.self.education.catinfo.api.CatsResponse;
 import com.self.education.catinfo.api.OffsetBasedPageRequest;
 import com.self.education.catinfo.mapper.CatsMapper;
@@ -21,6 +22,11 @@ public class CatsServiceImpl implements CatsService {
     @Override
     public Page<CatsResponse> findAllCats(Integer offset, Integer limit, Sort.Direction order, Attribute attribute) {
         final Pageable pageable = new OffsetBasedPageRequest(offset, limit, order, attribute);
-        return catsRepository.findAll(pageable).map(catsMapper::transform);
+        return catsRepository.findAll(pageable).map(catsMapper::transformEntityToResponse);
+    }
+
+    @Override
+    public void createCat(CatRequest request) {
+        catsRepository.createNewCat(catsMapper.transformRequestToEntity(request));
     }
 }

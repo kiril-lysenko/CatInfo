@@ -17,14 +17,14 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CatRequest {
 
-    @NotBlank
+    @NotBlank(message = "Cat name can't blank")
     private String name;
-    @NotNull
+    @NotNull(message = "Color can't be null")
     private Colors color;
-    @Min(value = 0, message = "Must be equal or greater than 0")
-    @Max(value = 100, message = "Must be equal or less than 100")
+    @Min(value = 0, message = "Tail length must be equal or greater than 0")
+    @Max(value = 100, message = "Tail length must be equal or less than 100")
     private Integer tailLength;
-    @Min(value = 0, message = "Must be equal or greater than 0")
-    @Max(value = 50, message = "Must be equal or less than 50")
+    @Min(value = 0, message = "Whiskers length must be equal or greater than 0")
+    @Max(value = 50, message = "Whiskers length must be equal or less than 50")
     private Integer whiskersLength;
 }

@@ -3,7 +3,7 @@ package com.self.education.catinfo.resource;
 import com.self.education.catinfo.api.Attribute;
 import com.self.education.catinfo.api.CatRequest;
 import com.self.education.catinfo.api.CatsResponse;
-import com.self.education.catinfo.exception.ErrorMessage;
+import com.self.education.catinfo.api.ErrorResponse;
 import com.self.education.catinfo.service.CatsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -37,8 +37,8 @@ public class CatsResource {
             description = "Endpoint for getting all cats",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Ok"),
-                    @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
-                    @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorMessage.class)))
+                    @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                    @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             })
     @GetMapping("/cats")
     public ResponseEntity<Page<CatsResponse>> findAllCats(
@@ -54,9 +54,9 @@ public class CatsResource {
             description = "Endpoint for added new cat",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Created"),
-                    @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
-                    @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
-                    @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorMessage.class)))
+                    @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                    @ApiResponse(responseCode = "409", description = "Conflict", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                    @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             })
     @PostMapping("/cat")
     public ResponseEntity<Void> createCat(@RequestBody @Valid final CatRequest request) {

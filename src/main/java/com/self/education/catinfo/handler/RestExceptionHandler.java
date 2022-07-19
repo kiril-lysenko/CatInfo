@@ -1,6 +1,6 @@
 package com.self.education.catinfo.handler;
 
-import com.self.education.catinfo.exception.ErrorMessage;
+import com.self.education.catinfo.api.ErrorResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,9 +21,9 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(value = BAD_REQUEST)
-    public ErrorMessage handleIllegalArgumentException(final IllegalArgumentException ex, final WebRequest request) {
+    public ErrorResponse handleIllegalArgumentException(final IllegalArgumentException ex, final WebRequest request) {
         //@formatter:off
-        return new ErrorMessage(
+        return new ErrorResponse(
                 BAD_REQUEST.value(),
                 ex.getMessage(),
                 request.getDescription(false)
@@ -33,9 +33,9 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(value = BAD_REQUEST)
-    public ErrorMessage handleValidationError(final MethodArgumentNotValidException ex, final WebRequest request) {
+    public ErrorResponse handleValidationError(final MethodArgumentNotValidException ex, final WebRequest request) {
         //@formatter:off
-        return new ErrorMessage(
+        return new ErrorResponse(
                 BAD_REQUEST.value(),
                 ex.getBindingResult().getFieldErrors().stream().map(FieldError::getDefaultMessage).sorted().collect(Collectors.joining(", ")),
                 request.getDescription(false)
@@ -45,9 +45,9 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(value = BAD_REQUEST)
-    public ErrorMessage handleConstraintViolationException(final ConstraintViolationException ex, final WebRequest request) {
+    public ErrorResponse handleConstraintViolationException(final ConstraintViolationException ex, final WebRequest request) {
         //@formatter:off
-        return new ErrorMessage(
+        return new ErrorResponse(
                 BAD_REQUEST.value(),
                 ex.getMessage(),
                 request.getDescription(false)
@@ -57,9 +57,9 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(value = INTERNAL_SERVER_ERROR)
-    public ErrorMessage handleGlobalException(final Exception ex, final WebRequest request) {
+    public ErrorResponse handleGlobalException(final Exception ex, final WebRequest request) {
         //@formatter:off
-        return new ErrorMessage(
+        return new ErrorResponse(
                 INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 request.getDescription(false)
@@ -69,9 +69,9 @@ public class RestExceptionHandler {
 
     @ExceptionHandler({DataIntegrityViolationException.class})
     @ResponseStatus(value = CONFLICT)
-    public ErrorMessage handleDataIntegrityViolation(final DataIntegrityViolationException ex, final WebRequest request) {
+    public ErrorResponse handleDataIntegrityViolation(final DataIntegrityViolationException ex, final WebRequest request) {
         //@formatter:off
-        return new ErrorMessage(
+        return new ErrorResponse(
                 CONFLICT.value(),
                 ex.getCause().getMessage(),
                 request.getDescription(false)

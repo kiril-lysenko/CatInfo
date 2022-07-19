@@ -1,13 +1,15 @@
-package com.self.education.catinfo.exception;
+package com.self.education.catinfo.api;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorMessage {
+public class ErrorResponse {
 
     private int statusCode;
     private String message;

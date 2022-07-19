@@ -58,15 +58,16 @@ public class CatsStatisticServiceImpl implements CatsStatisticService {
 
     private Double calculateMean(final List<Integer> nums) {
         final Integer sum = nums.stream().reduce(0, Integer::sum);
-        return (double) sum / nums.size();
+        return round((double) sum / nums.size());
     }
 
     private Double calculateMedian(final List<Integer> nums) {
-        final int size = nums.size();
+        final List<Integer> sorted = nums.stream().sorted().toList();
+        final int size = sorted.size();
         if (size % 2 == 1) {
-            return (double) nums.get((size + 1) / 2 - 1);
+            return round((double) sorted.get((size + 1) / 2 - 1));
         }
-        return (nums.get(size / 2 - 1) + nums.get(size / 2)) / 2.0;
+        return round((sorted.get(size / 2 - 1) + sorted.get(size / 2)) / 2.0);
     }
 
     private Integer[] calculateMode(final List<Integer> nums) {
@@ -89,6 +90,10 @@ public class CatsStatisticServiceImpl implements CatsStatisticService {
                 modes.add(result.getKey());
         }
         return modes.toArray(new Integer[0]);
+    }
+
+    private Double round(final Double number) {
+        return Math.round(number * 100.0) / 100.0;
     }
 
     private void createOrUpdate(final CatColorsInfo catColorInfo) {

@@ -72,7 +72,7 @@ public class RequestThrottleFilter implements Filter {
         return false;
     }
 
-    public String getClientIP(final HttpServletRequest request) {
+    private String getClientIP(final HttpServletRequest request) {
         String xfHeader = request.getHeader("X-Forwarded-For");
         if (xfHeader == null) {
             return request.getRemoteAddr();

@@ -66,7 +66,7 @@ public class CatInfoHelper {
     public static Cats.CatsBuilder whiteCatEntity() {
         //@formatter:off
         return Cats.builder()
-                .id(2L)
+                .id(18L)
                 .name(WHITE_CAT_NAME)
                 .color(WHITE)
                 .tailLength(WHITE_CAT_TAIL_LENGTH)
@@ -77,7 +77,7 @@ public class CatInfoHelper {
     public static Cats.CatsBuilder redCatEntity() {
         //@formatter:off
         return Cats.builder()
-                .id(1L)
+                .id(17L)
                 .name(RED_CAT_NAME)
                 .color(RED)
                 .tailLength(RED_CAT_TAIL_LENGTH)

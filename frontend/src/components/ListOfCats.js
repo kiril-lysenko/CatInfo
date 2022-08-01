@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Component} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,7 +5,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import {Paper, styled, tableCellClasses, TableFooter, TablePagination, TableSortLabel} from "@mui/material";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import {Box, Paper, Stack, styled, tableCellClasses, TableFooter, TablePagination, TableSortLabel} from "@mui/material";
+import CatColorsInfo from "./CatColorsInfo";
+import CatsStatisticInfo from "./CatsStatisticInfo";
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,7 +50,9 @@ class ListOfCats extends Component {
         size: 0,
         number: 0,
         direction: "ASC",
-        orderBy: "ID"
+        orderBy: "ID",
+        openColorStat: false,
+        openCatsStat: false
     };
 
     queryString(query = {}) {
@@ -90,57 +98,123 @@ class ListOfCats extends Component {
         this.handleRequestSort(event, property);
     };
 
+    handleClickOpen = () => {
+        this.setState({
+            openColorStat: true
+        });
+    };
+
+    handleClickOpenCatsStat = () => {
+        this.setState({
+            openCatsStat: true
+        });
+    };
+
+    handleClose = () => {
+        this.setState({
+            openColorStat: false
+        });
+    };
+
+    handleCloseCatsStat = () => {
+        this.setState({
+            openCatsStat: false
+        });
+    };
+
     render() {
-        const {content, totalElements, number, size, direction, orderBy} = this.state;
+        const {content, totalElements, number, size, direction, orderBy, openColorStat, openCatsStat} = this.state;
         return (
-            <TableContainer component={Paper}>
-                <Table sx={{minWidth: 500}}>
-                    <TableHead>
-                        <TableRow>
-                            {headCells.map((headCell) => (
-                                <StyledTableCell key={headCell.id}
-                                                 align={'left'}>
-                                    <TableSortLabel
-                                        active={orderBy === headCell.id}
-                                        direction={orderBy === headCell.id ? direction.toLowerCase() : 'asc'}
-                                        onClick={this.createSortHandler(headCell.id)}
-                                    >
-                                        {headCell.label}
-                                    </TableSortLabel>
-                                </StyledTableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {content.map((cat) => (
-                            <TableRow key={cat.name}>
-                                <TableCell component="th" scope="row">{cat.name}</TableCell>
-                                <TableCell align="left">{cat.color}</TableCell>
-                                <TableCell align="left">{cat.tailLength}</TableCell>
-                                <TableCell align="left">{cat.whiskersLength}</TableCell>
+            <Box sx={{mt: 2}}>
+                <Stack spacing={2} direction="row">
+                    <Button variant="outlined" onClick={this.handleClickOpen}>
+                        Open Colors Statistic
+                    </Button>
+                    <Dialog
+                        open={openColorStat}
+                        onClose={this.handleClose}
+                        aria-labelledby="responsive-dialog-title">
+                        <DialogTitle id="responsive-dialog-title">
+                            {"Cats Color Statistic"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <CatColorsInfo/>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose}>
+                                Close
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                    <Button variant="outlined" onClick={this.handleClickOpenCatsStat}>
+                        Open Cats Statistic
+                    </Button>
+                    <Dialog
+                        open={openCatsStat}
+                        onClose={this.handleCloseCatsStat}
+                        aria-labelledby="responsive-dialog-title">
+                        <DialogTitle id="responsive-dialog-title">
+                            {"Cats Color Statistic"}
+                        </DialogTitle>
+                        <DialogContent>
+                            <CatsStatisticInfo/>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleCloseCatsStat}>
+                                Close
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </Stack>
+                <TableContainer component={Paper} sx={{mt: 2}}>
+                    <Table sx={{minWidth: 500}}>
+                        <TableHead>
+                            <TableRow>
+                                {headCells.map((headCell) => (
+                                    <StyledTableCell key={headCell.id}
+                                                     align={'left'}>
+                                        <TableSortLabel
+                                            active={orderBy === headCell.id}
+                                            direction={orderBy === headCell.id ? direction.toLowerCase() : 'asc'}
+                                            onClick={this.createSortHandler(headCell.id)}
+                                        >
+                                            {headCell.label}
+                                        </TableSortLabel>
+                                    </StyledTableCell>
+                                ))}
                             </TableRow>
-                        ))}
-                    </TableBody>
-                    <TableFooter>
-                        <TableRow>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10, 25, {label: 'All', value: totalElements}]}
-                                count={totalElements}
-                                rowsPerPage={size}
-                                page={number}
-                                SelectProps={{
-                                    inputProps: {
-                                        'aria-label': 'rows per page',
-                                    },
-                                    native: true,
-                                }}
-                                onPageChange={this.handleChangePage}
-                                onRowsPerPageChange={this.handleChangeRowsPerPage}
-                            />
-                        </TableRow>
-                    </TableFooter>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {content.map((cat) => (
+                                <TableRow key={cat.name}>
+                                    <TableCell component="th" scope="row">{cat.name}</TableCell>
+                                    <TableCell align="left">{cat.color}</TableCell>
+                                    <TableCell align="left">{cat.tailLength}</TableCell>
+                                    <TableCell align="left">{cat.whiskersLength}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                        <TableFooter>
+                            <TableRow>
+                                <TablePagination
+                                    rowsPerPageOptions={[5, 10, 25, {label: 'All', value: totalElements}]}
+                                    count={totalElements}
+                                    rowsPerPage={size}
+                                    page={number}
+                                    SelectProps={{
+                                        inputProps: {
+                                            'aria-label': 'rows per page',
+                                        },
+                                        native: true,
+                                    }}
+                                    onPageChange={this.handleChangePage}
+                                    onRowsPerPageChange={this.handleChangeRowsPerPage}
+                                />
+                            </TableRow>
+                        </TableFooter>
+                    </Table>
+                </TableContainer>
+            </Box>
         );
     }
 }

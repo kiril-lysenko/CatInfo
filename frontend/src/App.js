@@ -4,6 +4,7 @@ import {Component} from "react";
 import ListOfCats from "./components/ListOfCats";
 import CatColorsInfo from "./components/CatColorsInfo";
 import CatsStatisticInfo from "./components/CatsStatisticInfo";
+import CreateCat from "./components/CreateCat";
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
                     <Route path='/cats' exact={true} element={<ListOfCats/>}/>
                     <Route path='/cats-statistic/cat-colors' exact={true} element={<CatColorsInfo/>}/>
                     <Route path='/cats-statistic/tail-and-whiskers-length' exact={true} element={<CatsStatisticInfo/>}/>
+                    <Route path='/cat' exact={true} element={<CreateCat/>}/>
                 </Routes>
             </Router>
         )

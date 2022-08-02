@@ -51,7 +51,7 @@ class CatsStatisticInfo extends Component {
                                 Tail Length Mode
                             </TableCell>
                             <TableCell align="right">
-                                {statInfo.tailLengthMode}
+                                {JSON.stringify(statInfo.tailLengthMode)}
                             </TableCell>
                         </TableRow>
                         <TableRow>
@@ -75,7 +75,7 @@ class CatsStatisticInfo extends Component {
                                 Whiskers Length Mode
                             </TableCell>
                             <TableCell align="right">
-                                {statInfo.whiskersLengthMode}
+                                {JSON.stringify(statInfo.whiskersLengthMode)}
                             </TableCell>
                         </TableRow>
                     </TableBody>

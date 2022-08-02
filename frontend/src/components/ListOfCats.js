@@ -13,6 +13,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {Box, Paper, Stack, styled, tableCellClasses, TableFooter, TablePagination, TableSortLabel} from "@mui/material";
 import CatColorsInfo from "./CatColorsInfo";
 import CatsStatisticInfo from "./CatsStatisticInfo";
+import CreateCat from "./CreateCat";
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -165,6 +166,7 @@ class ListOfCats extends Component {
                             </Button>
                         </DialogActions>
                     </Dialog>
+                    <CreateCat/>
                 </Stack>
                 <TableContainer component={Paper} sx={{mt: 2}}>
                     <Table sx={{minWidth: 500}}>

@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import {
+    Alert,
     Box,
     Button,
+    Collapse,
     FormControl,
     InputLabel,
     MenuItem,
@@ -59,7 +61,8 @@ class CreateCat extends Component {
             cat: this.emptyCatInfo,
             openModal: false,
             disableSave: true,
-            error: this.errorDefault
+            error: this.errorDefault,
+            showAlert: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,8 +82,10 @@ class CreateCat extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(cat),
-        });
-        window.location.reload();
+        }).then((res) => this.setState({showAlert: res.status === 409}));
+        setTimeout(function () {
+            window.location.reload()
+        }, 4000);
     }
 
     validate(event) {
@@ -144,6 +149,9 @@ class CreateCat extends Component {
                     onClose={this.handleClose}
                 >
                     <Box sx={style}>
+                        <Collapse in={this.state.showAlert}>
+                            <Alert severity="error">Name {cat.name} is exist in DB</Alert>
+                        </Collapse>
                         <Stack component="form" sx={{width: '200', m: 2}} spacing={2}>
                             <TextField name="name" label="Name" variant="outlined" onChange={this.handleChange}
                                        helperText={error.errorName}

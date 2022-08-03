@@ -1,5 +1,6 @@
 package com.self.education.catinfo.integration_tests;
 
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -30,9 +31,6 @@ class CatsStatisticResourceIT {
 
     @Value("${local.server.port}")
     private int port;
-
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
 
     @Test
     @Sql(executionPhase = BEFORE_TEST_METHOD, scripts = "classpath:integration/db/db_drop_table.sql")
@@ -84,7 +82,7 @@ class CatsStatisticResourceIT {
     }
 
     private String buildRequestUrlStr() {
-        return "http://localhost:" + port + contextPath + "/v1/cats-statistic";
+        return "http://localhost:" + port + "/cat-info/v1/cats-statistic";
     }
 
     private String getResponse(String file) throws IOException {

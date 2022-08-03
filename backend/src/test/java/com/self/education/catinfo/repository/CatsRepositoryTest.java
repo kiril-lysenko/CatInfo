@@ -4,8 +4,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static com.self.education.catinfo.domain.Colors.BLACK_RED;
-import static com.self.education.catinfo.domain.Colors.RED_WHITE;
 import static com.self.education.catinfo.helper.CatInfoHelper.redCatEntity;
 import static com.self.education.catinfo.helper.CatInfoHelper.whiteCatEntity;
 
@@ -20,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import com.self.education.catinfo.api.OffsetBasedPageRequest;
-import com.self.education.catinfo.domain.CatColorsInfo;
 import com.self.education.catinfo.domain.Cats;
 import com.self.education.catinfo.integration_tests.config.H2Config;
 

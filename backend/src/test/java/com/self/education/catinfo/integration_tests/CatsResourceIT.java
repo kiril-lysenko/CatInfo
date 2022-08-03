@@ -36,9 +36,6 @@ class CatsResourceIT {
     @Value("${local.server.port}")
     private int port;
 
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
-
     @Test
     @Sql(executionPhase = BEFORE_TEST_METHOD, scripts = { "classpath:integration/db/db_cleanup.sql",
             "classpath:integration/db/cats_data.sql" })
@@ -147,7 +144,7 @@ class CatsResourceIT {
     }
 
     private String buildRequestUrlStr() {
-        return "http://localhost:" + port + contextPath + "/v1";
+        return "http://localhost:" + port + "/cat-info/v1";
     }
 
     private String getRequest(String file) throws IOException {

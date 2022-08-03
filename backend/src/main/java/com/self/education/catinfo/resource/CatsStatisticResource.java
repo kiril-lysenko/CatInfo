@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1/cats-statistic")
+@RequestMapping("/cat-info/v1/cats-statistic")
 public class CatsStatisticResource {
 
     private final CatsStatisticService catsStatisticService;

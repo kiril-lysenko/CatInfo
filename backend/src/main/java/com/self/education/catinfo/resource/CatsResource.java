@@ -27,7 +27,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1")
+@RequestMapping("/cat-info/v1")
 public class CatsResource {
 
     private final CatsService catsService;

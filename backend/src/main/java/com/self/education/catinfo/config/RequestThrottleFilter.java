@@ -38,6 +38,7 @@ public class RequestThrottleFilter implements Filter {
 
     @Override
     public void init(final FilterConfig filterConfig) {
+        //Should not implement
     }
 
     @Override
@@ -82,5 +83,6 @@ public class RequestThrottleFilter implements Filter {
 
     @Override
     public void destroy() {
+        //Should not implement
     }
 }

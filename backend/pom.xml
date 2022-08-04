@@ -221,6 +221,11 @@
                             <resources>
                                 <resource>
                                     <directory>${project.parent.basedir}/frontend/build</directory>
+                                    <includes>
+                                        <include>static/</include>
+                                        <include>index.html</include>
+                                        <include>favicon.ico</include>
+                                    </includes>
                                 </resource>
                             </resources>
                         </configuration>

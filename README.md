@@ -1,5 +1,5 @@
 # CatInfo
-For starting application prefer docker-compose, but you also can use maven
+For starting application prefer docker-compose, but you also can use maven. Also configure Heroku web link you can see at column about(the site goes to sleep when not used for a long time, so you may have to wait).
 ### Maven Instruction
 Change liquibase flag and change database configs for your own in application.properties as below 
 ````

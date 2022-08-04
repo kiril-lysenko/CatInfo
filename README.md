@@ -12,6 +12,10 @@ mvn clean install
  mvn --projects backend spring-boot:run
 ````
 ### Docker Instruction
+For generated targer folder
+````
+mvn clean install
+````
 Build and Run Docker Images
 ````
 docker-compose up

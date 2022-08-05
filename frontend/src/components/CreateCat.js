@@ -11,7 +11,7 @@ import {
     OutlinedInput,
     Select,
     Stack,
-    TextField
+    TextField, Typography
 } from "@mui/material";
 
 const style = {
@@ -85,7 +85,7 @@ class CreateCat extends Component {
         }).then((res) => this.setState({showAlert: res.status === 409}));
         setTimeout(function () {
             window.location.reload()
-        }, 4000);
+        }, 3000);
     }
 
     validate(event) {
@@ -143,12 +143,15 @@ class CreateCat extends Component {
 
         return (
             <div>
-                <Button onClick={this.handleOpen} variant="outlined">Open modal</Button>
+                <Button onClick={this.handleOpen} variant="outlined">Create Cat</Button>
                 <Modal
                     open={this.state.openModal}
                     onClose={this.handleClose}
                 >
                     <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Add New Cat
+                        </Typography>
                         <Collapse in={this.state.showAlert}>
                             <Alert severity="error">Name {cat.name} is exist in DB</Alert>
                         </Collapse>

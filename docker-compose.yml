@@ -12,7 +12,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
-    command: liquibase:update -Ddatabase.conn.url=jdbc:postgresql://postgres:5432/postgres -Ddatabase.promptOnNonLocalDatabase=false -P liquibase
+      SPRING_LIQUIBASE_ENABLED: "true"
   frontend:
     build:
       context: frontend

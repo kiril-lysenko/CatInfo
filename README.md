@@ -7,7 +7,7 @@
 This project contain solution on testing task from  https://github.com/wgnet/wg_forge_backend with the addition of
 the developer's imagination.
 
-Project contain:
+Project contains:
 
 * Table with information about cats.
 * Cats' colors statistic information
